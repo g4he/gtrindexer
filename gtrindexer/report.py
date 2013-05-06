@@ -26,6 +26,7 @@ while True:
         fund = composition.get("projectComposition", {}).get("project", {}).get("fund", {})
         title = composition.get("projectComposition", {}).get("project", {}).get("title", "")
         id = composition.get("projectComposition", {}).get("project", {}).get("id", "")
+        ref = composition.get("projectComposition", {}).get("project", {}).get("grantReference", "")
         
         pi = ""
         ci = ""
@@ -47,6 +48,7 @@ while True:
                 pi,
                 ci,
                 funder,
+                ref,
                 title,
                 str(value),
                 start,
@@ -55,7 +57,7 @@ while True:
         )
 
 writer = csv.writer(open("report.csv", "wb"))
-writer.writerow(["GtR ID", "PI", "CoI", "Funder", "Project Title", "Award Value", "Start", "End"])
+writer.writerow(["GtR ID", "PI", "CoI", "Funder", "Grant Reference", "Project Title", "Award Value", "Start", "End"])
 
 for line in report:
     newline = ["" if l is None else l for l in line]
