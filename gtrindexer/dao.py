@@ -7,7 +7,8 @@ All models in models.py should inherig this DomainObject to know how to save the
 You can overwrite and add to the DomainObject functions as required. See models.py for some examples.
 '''
 
-ELASTIC_SEARCH_HOST = "test.cottagelabs.com:9200/"
+#ELASTIC_SEARCH_HOST = "test.cottagelabs.com:9200/"
+ELASTIC_SEARCH_HOST = "localhost:9200/"
 ELASTIC_SEARCH_DB = "gtr"
 
 class DomainObject(UserDict.IterableUserDict):

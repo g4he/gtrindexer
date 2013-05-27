@@ -1,0 +1,277 @@
+{
+  "funders": [
+    {
+      "id": "1291772D-DFCE-493A-AEE7-24F7EEAFE0E9", 
+      "url": "http://gtr.rcuk.ac.uk:80/organisation/1291772D-DFCE-493A-AEE7-24F7EEAFE0E9", 
+      "name": "AHRC", 
+      "address": {
+        "city": "Swindon", 
+        "country": "United Kingdom", 
+        "region": "South West", 
+        "line2": "North Star Avenue", 
+        "line1": "Polaris House", 
+        "postCode": "SN2 1FL"
+      }
+    }
+  ], 
+  "ci": [
+    {
+      "person": {
+        "url": "http://gtr.rcuk.ac.uk:80/person/1566F5D3-77C9-4A7E-9611-BE5AD302B717", 
+        "surname": "Marcel", 
+        "id": "1566F5D3-77C9-4A7E-9611-BE5AD302B717", 
+        "firstName": "Anthony"
+      }, 
+      "organisation": {
+        "id": "5E589D68-A73C-42BB-892C-BC508C7B60CA", 
+        "url": "http://gtr.rcuk.ac.uk:80/organisation/5E589D68-A73C-42BB-892C-BC508C7B60CA", 
+        "name": "University of Hertfordshire", 
+        "address": {
+          "city": "Hatfield", 
+          "country": "United Kingdom", 
+          "line5": "Hertfordshire", 
+          "line2": "College Lane", 
+          "line1": "Hatfield Campus", 
+          "postCode": "AL10 9AB", 
+          "region": "East of England"
+        }
+      }
+    }, 
+    {
+      "person": {
+        "otherNames": "Andrew", 
+        "url": "http://gtr.rcuk.ac.uk:80/person/7D655448-85D8-4BA2-9230-2FB7F6663ED3", 
+        "surname": "Gallagher", 
+        "id": "7D655448-85D8-4BA2-9230-2FB7F6663ED3", 
+        "firstName": "Shaun"
+      }, 
+      "organisation": {
+        "id": "5E589D68-A73C-42BB-892C-BC508C7B60CA", 
+        "url": "http://gtr.rcuk.ac.uk:80/organisation/5E589D68-A73C-42BB-892C-BC508C7B60CA", 
+        "name": "University of Hertfordshire", 
+        "address": {
+          "city": "Hatfield", 
+          "country": "United Kingdom", 
+          "line5": "Hertfordshire", 
+          "line2": "College Lane", 
+          "line1": "Hatfield Campus", 
+          "postCode": "AL10 9AB", 
+          "region": "East of England"
+        }
+      }
+    }, 
+    {
+      "person": {
+        "url": "http://gtr.rcuk.ac.uk:80/person/F93E734B-E19C-4CF5-89E6-0D54A03B760C", 
+        "surname": "Coleman", 
+        "id": "F93E734B-E19C-4CF5-89E6-0D54A03B760C", 
+        "firstName": "Sam"
+      }, 
+      "organisation": {
+        "id": "5E589D68-A73C-42BB-892C-BC508C7B60CA", 
+        "url": "http://gtr.rcuk.ac.uk:80/organisation/5E589D68-A73C-42BB-892C-BC508C7B60CA", 
+        "name": "University of Hertfordshire", 
+        "address": {
+          "city": "Hatfield", 
+          "country": "United Kingdom", 
+          "line5": "Hertfordshire", 
+          "line2": "College Lane", 
+          "line1": "Hatfield Campus", 
+          "postCode": "AL10 9AB", 
+          "region": "East of England"
+        }
+      }
+    }
+  ], 
+  "lead_ro": [
+    {
+      "organisationOverview": {
+        "organisation": {
+          "id": "5E589D68-A73C-42BB-892C-BC508C7B60CA", 
+          "url": "http://gtr.rcuk.ac.uk:80/organisation/5E589D68-A73C-42BB-892C-BC508C7B60CA", 
+          "name": "University of Hertfordshire", 
+          "address": {
+            "city": "Hatfield", 
+            "country": "United Kingdom", 
+            "line5": "Hertfordshire", 
+            "line2": "College Lane", 
+            "line1": "Hatfield Campus", 
+            "postCode": "AL10 9AB", 
+            "region": "East of England"
+          }
+        }
+      }
+    }
+  ], 
+  "primary_funder": {
+    "id": "1291772D-DFCE-493A-AEE7-24F7EEAFE0E9", 
+    "url": "http://gtr.rcuk.ac.uk:80/organisation/1291772D-DFCE-493A-AEE7-24F7EEAFE0E9", 
+    "name": "AHRC", 
+    "address": {
+      "city": "Swindon", 
+      "country": "United Kingdom", 
+      "region": "South West", 
+      "line2": "North Star Avenue", 
+      "line1": "Polaris House", 
+      "postCode": "SN2 1FL"
+    }
+  }, 
+  "organisation": [
+    {
+      "id": "5E589D68-A73C-42BB-892C-BC508C7B60CA", 
+      "url": "http://gtr.rcuk.ac.uk:80/organisation/5E589D68-A73C-42BB-892C-BC508C7B60CA", 
+      "name": "University of Hertfordshire", 
+      "address": {
+        "city": "Hatfield", 
+        "country": "United Kingdom", 
+        "line5": "Hertfordshire", 
+        "line2": "College Lane", 
+        "line1": "Hatfield Campus", 
+        "postCode": "AL10 9AB", 
+        "region": "East of England"
+      }
+    }
+  ], 
+  "projectPerson": [
+    {
+      "surname": "Coates", 
+      "firstName": "Paul", 
+      "coInvestigator": false, 
+      "url": "http://gtr.rcuk.ac.uk:80/person/51A1D6EF-D7FE-4290-BAC9-FB2B4BBD712F", 
+      "principalInvestigator": true, 
+      "fellow": false, 
+      "projectRole": [
+        "PRINCIPAL_INVESTIGATOR"
+      ], 
+      "id": "51A1D6EF-D7FE-4290-BAC9-FB2B4BBD712F"
+    }, 
+    {
+      "surname": "Marcel", 
+      "firstName": "Anthony", 
+      "coInvestigator": true, 
+      "url": "http://gtr.rcuk.ac.uk:80/person/1566F5D3-77C9-4A7E-9611-BE5AD302B717", 
+      "principalInvestigator": false, 
+      "fellow": false, 
+      "projectRole": [
+        "CO_INVESTIGATOR"
+      ], 
+      "id": "1566F5D3-77C9-4A7E-9611-BE5AD302B717"
+    }, 
+    {
+      "surname": "Gallagher", 
+      "firstName": "Shaun", 
+      "coInvestigator": true, 
+      "url": "http://gtr.rcuk.ac.uk:80/person/7D655448-85D8-4BA2-9230-2FB7F6663ED3", 
+      "principalInvestigator": false, 
+      "fellow": false, 
+      "otherNames": "Andrew", 
+      "projectRole": [
+        "CO_INVESTIGATOR"
+      ], 
+      "id": "7D655448-85D8-4BA2-9230-2FB7F6663ED3"
+    }, 
+    {
+      "surname": "Coleman", 
+      "firstName": "Sam", 
+      "coInvestigator": true, 
+      "url": "http://gtr.rcuk.ac.uk:80/person/F93E734B-E19C-4CF5-89E6-0D54A03B760C", 
+      "principalInvestigator": false, 
+      "fellow": false, 
+      "projectRole": [
+        "CO_INVESTIGATOR"
+      ], 
+      "id": "F93E734B-E19C-4CF5-89E6-0D54A03B760C"
+    }
+  ], 
+  "project": {
+    "status": "Active", 
+    "identifier": [
+      {
+        "type": "RCUK", 
+        "value": "AH/G01258X/1"
+      }
+    ], 
+    "publication": [
+      {
+        "isbn": "", 
+        "author": [
+          {
+            "otherNames": "P Coates", 
+            "url": "http://gtr.rcuk.ac.uk:80/person/3D019B9C-02CF-4209-B134-1813EC19A152", 
+            "id": "3D019B9C-02CF-4209-B134-1813EC19A152"
+          }
+        ], 
+        "url": "http://gtr.rcuk.ac.uk:80/publication/FD0EF0BE-45A6-4F03-A90D-C2F2896CC25C", 
+        "issn": "0276-2080", 
+        "parentPublicationTitle": "Philosophical Topics", 
+        "date": "2009-01-01", 
+        "title": "The Multiple Contents of Experience : Representation and the Awareness of Phenomenal Qualities", 
+        "id": "FD0EF0BE-45A6-4F03-A90D-C2F2896CC25C"
+      }
+    ], 
+    "grantCategory": "Research Grant", 
+    "url": "http://gtr.rcuk.ac.uk:80/project/0031D411-049F-444F-B63F-B8F0038CDF23", 
+    "title": "The Nature of Phenomenal Qualities", 
+    "grantReference": "AH/G01258X/1", 
+    "fund": {
+      "valuePounds": 368443, 
+      "funder": {
+        "url": "http://gtr.rcuk.ac.uk:80/organisation/1291772D-DFCE-493A-AEE7-24F7EEAFE0E9", 
+        "id": "1291772D-DFCE-493A-AEE7-24F7EEAFE0E9", 
+        "name": "AHRC"
+      }, 
+      "end": "2013-09-30", 
+      "start": "2009-05-01"
+    }, 
+    "output": {
+      "intellectualPropertyOutput": [], 
+      "spinOutOutput": [], 
+      "researchMaterialOutput": [], 
+      "productOutput": [], 
+      "policyInfluenceOutput": [], 
+      "collaborationOutput": []
+    }, 
+    "abstractText": "This project will explore issues connected with the exact nature of the phenomenal aspects of experience. In perceptual and related experiences subjects are aware of a range of phenomenal qualities: these are the colours, sounds, and so on, which are immediately present in conscious experience. There is currently broad-ranging debate about the reality and cognitive role of phenomenal qualities. There is no settled view about their status either as subjective - belonging to inner mental items of some kind - or as objective, dependent in some way upon the properties of the surrounding objects perceived. Nor is there agreement about the ultimate ontological status of phenomenal qualities, and how they are related to the entities postulated in our best current scientific explanations about the underlying structure of physical things.  \\n\\nThe research will seek to answer the following questions: \\n(1)\tIn what sense can we say that phenomenal qualities exist? What is the relation of phenomenal qualities to cognitive processes? Do they form a distinct component in consciousness, or do they, in some respects, parallel conceptual states as distinctive perceptual ways of representing facts about the world?\\n(2)\tHow are phenomenal qualities related to the mind? Where are phenomenal qualities located - are they subjective states of the experiencing subject? Or should phenomenal qualities, at least when they occur in normal perception, be understood as in some manner dependent on the objective properties of the external objects perceived?\\n(3)\tWhat is the ultimate ontological nature of phenomenal qualities? How can we reconcile our current scientific theories about the real underlying physical nature of persons and objects with the existence of conscious experience and with the phenomenology of perception? Should we embrace a radical revision or extension of fundamental physics, as some theorists suggest?\\n\\nThe research will be organised into four interconnected phases of enquiry: \\n\\nThe first phase will consist of a series of seminars, extending over the course of two semesters, with papers from leading theorists in philosophy and cognitive science on the general topic of the nature and role of phenomenal qualities in perception and in hallucination. Concurrently, two PhD students, together with one post-doctoral researcher, will be engaged to research the nature of phenomenal qualities. \\nIt is planned that one of the doctoral researchers will focus on issues connected with the 'subjective dimension' of the problems, that is, on the implications of our subjective experience of phenomenal qualities for current versions of physicalism. The second doctoral researcher will focus on issues connected with the 'objective dimension' of the problems: on the phenomenology of perception, and the implications of theories of perception for questions concerning the underlying objective nature of the physical things we perceive. A web-site will be established, and suitable draft material from the seminar series will be placed online.\\n\\nThe second phase will involve organising two workshops covering respectively the subjective and objective aspects of the general problem, in the second year of the project. The resulting material will be made available online, facilitating discussion and allowing for the generation of feedback on the research.\\n\\nThe third phase will focus mainly upon the international conference, at the end of the final year, to which leading international theorists in this area will give papers. We also envisage the completion of 2 PhDs, the post-doctoral monograph, and refereed articles by each of the project's two investigators. The conference proceedings will be edited and submitted to OUP or other leading publisher.\\n\\nThe final phase will see the dissemination of the research both in print, and where appropriate, online; and al", 
+    "id": "0031D411-049F-444F-B63F-B8F0038CDF23"
+  }, 
+  "leadResearchOrganisation": {
+    "id": "5E589D68-A73C-42BB-892C-BC508C7B60CA", 
+    "url": "http://gtr.rcuk.ac.uk:80/organisation/5E589D68-A73C-42BB-892C-BC508C7B60CA", 
+    "name": "University of Hertfordshire", 
+    "address": {
+      "city": "Hatfield", 
+      "country": "United Kingdom", 
+      "line5": "Hertfordshire", 
+      "line2": "College Lane", 
+      "line1": "Hatfield Campus", 
+      "postCode": "AL10 9AB", 
+      "region": "East of England"
+    }
+  }, 
+  "collaborator": [], 
+  "pi": [
+    {
+      "person": {
+        "url": "http://gtr.rcuk.ac.uk:80/person/51A1D6EF-D7FE-4290-BAC9-FB2B4BBD712F", 
+        "surname": "Coates", 
+        "id": "51A1D6EF-D7FE-4290-BAC9-FB2B4BBD712F", 
+        "firstName": "Paul"
+      }, 
+      "organisation": {
+        "id": "5E589D68-A73C-42BB-892C-BC508C7B60CA", 
+        "url": "http://gtr.rcuk.ac.uk:80/organisation/5E589D68-A73C-42BB-892C-BC508C7B60CA", 
+        "name": "University of Hertfordshire", 
+        "address": {
+          "city": "Hatfield", 
+          "country": "United Kingdom", 
+          "line5": "Hertfordshire", 
+          "line2": "College Lane", 
+          "line1": "Hatfield Campus", 
+          "postCode": "AL10 9AB", 
+          "region": "East of England"
+        }
+      }
+    }
+  ]
+}
+
