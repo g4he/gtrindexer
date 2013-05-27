@@ -1,4 +1,4 @@
-from gtrclient import workflows
+from gtr import workflows
 import models
 
 def project_handler(project):
