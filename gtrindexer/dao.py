@@ -9,7 +9,7 @@ You can overwrite and add to the DomainObject functions as required. See models.
 
 #ELASTIC_SEARCH_HOST = "test.cottagelabs.com:9200/"
 ELASTIC_SEARCH_HOST = "localhost:9200/"
-ELASTIC_SEARCH_DB = "gtr"
+ELASTIC_SEARCH_DB = "gtrraw"
 
 class DomainObject(UserDict.IterableUserDict):
     __type__ = None # set the type on the model that inherits this
@@ -97,6 +97,12 @@ class DomainObject(UserDict.IterableUserDict):
         keys.sort()
         return keys
     """
+    
+    @classmethod
+    def create_mapping(cls, mapping):
+        t = 'http://' + str(ELASTIC_SEARCH_HOST).rstrip('/') + '/'
+        t += ELASTIC_SEARCH_DB
+        requests.put(t, data=json.dumps(mapping))
     
     @classmethod
     def query(cls, recid='', endpoint='_search', q='', terms=None, facets=None, **kwargs):
