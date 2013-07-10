@@ -105,6 +105,25 @@ class DomainObject(UserDict.IterableUserDict):
         requests.put(t, data=json.dumps(mapping))
     
     @classmethod
+    def type_mapping(cls, mapping):
+        t = 'http://' + str(ELASTIC_SEARCH_HOST).rstrip('/') + '/'
+        t += ELASTIC_SEARCH_DB + "/" + cls.__type__ + "/_mapping"
+        requests.put(t, data=json.dumps(mapping))
+    
+    @classmethod
+    def term(cls, field, value, one_answer=False):
+        query = {
+            "query" : {
+                "term" : {field : value}
+            }
+        }
+        result = cls.query(q=query)
+        objects = [i.get("_source", {}) for i in result.get('hits', {}).get('hits', [])]
+        if one_answer:
+            return objects[0]
+        return objects
+    
+    @classmethod
     def query(cls, recid='', endpoint='_search', q='', terms=None, facets=None, **kwargs):
         '''Perform a query on backend.
 
