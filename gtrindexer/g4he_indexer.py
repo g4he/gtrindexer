@@ -1,20 +1,19 @@
-import models, json
+import models, json, hashlib
+from datetime import datetime
 
 all_query = { 
     "query" : { 
         "query_string" : { "query" : "*" }
-    }, 
-    "from" : 0, 
-    "size" : 500
+    }
 }
+query_size=1000
 
 class_query = { 
     "query" : { 
         "query_string" : { "query" : "*" }
-    }, 
-    "from" : 0, 
-    "size" : 500
+    }
 }
+class_page_size=500
 
 role_map = {
     "PRINCIPAL_INVESTIGATOR" : "principalInvestigator",
@@ -26,7 +25,7 @@ collaborator_people = [
 ]
 
 collaborator_orgs = [
-    "leadRO", "fellow", "principalInvestigator", "coInvestigator"
+    "leadRo", "fellow", "principalInvestigator", "coInvestigator"
 ]
 
 mapping = {
@@ -51,12 +50,12 @@ mapping = {
 models.Record.type_mapping(mapping)
 
 def _normalise(s):
-    return s[0].lower() + s[1:].replace(" ", "")
+    camel = "".join([w[0].upper() + w[1:] for w in s.lower().split(" ") if w != ""])
+    return camel[0].lower() + camel[1:]
 
 # load the cerif classes into memory for convenience
 CERIF_CLASSES = {}
-klazz_results = models.CerifClass.query(q=class_query)
-klazzs = [i.get("_source", {}) for i in klazz_results.get('hits', {}).get('hits', [])]
+klazzs = models.CerifClass.query(q=class_query, result_size=class_page_size, raw=False)
 for k in klazzs:
     cfclassid = k.get("cfClassId")
     value = None
@@ -90,17 +89,33 @@ def add_collaborator_person(project, role, person):
     if cname is None:
         return
     
-    if duplicate_collaborator_person(project, cname):
+    unique = unique_person_key(person)
+    if duplicate_collaborator_person(project, unique):
         return
     
+    collp['slug'] = unique
     collp['canonical'] = cname
-    collp[cname + "_principalInvestigator"] = cname if role is "principalInvestigator" else None
-    collp[cname + "_coInvestigator"] = cname if role is "coInvestigator" else None
+    
+    if role is "principalInvestigator":
+        collp[unique + "_principalInvestigator"] = unique
+        collp["principalInvestigator"] = cname
+    
+    if role is "coInvestigator":
+        collp[unique + "_coInvestigator"] = unique
+        collp["coInvestigator"] = cname
+    
     append(project, "collaboratorPerson", collp)
 
-def duplicate_collaborator_person(project, cname):
+def unique_person_key(person):
+    p = person.get("person", {})
+    o = person.get("organisation", {})
+    s = p.get("firstName", "") + p.get("surname", "") + o.get("name", "")
+    key = hashlib.md5(s.encode("utf-8")).hexdigest()
+    return key
+
+def duplicate_collaborator_person(project, unique):
     for cp in project.get("collaboratorPerson", []):
-        if cp.get("canonical") == cname:
+        if cp.get("slug") == unique:
             return True
     return False
 
@@ -143,31 +158,51 @@ def restructure_orgs(project):
     # now finally rationalise the lead research organisations data (this will
     # de-duplicate with any existing known leadRO)
     if "leadResearchOrganisation" in project:
-        add_collaborator_org(project, "leadRO", project.get("leadResearchOrganisation"))
+        add_collaborator_org(project, "leadRo", project.get("leadResearchOrganisation"))
 
 def add_collaborator_org(project, role, org):
     co = {"organisation" : org}
     cname, alts = org_names(org)
     
     # find out if this is a duplicate of an existing org record
-    if duplicate_collaborator_org(project, cname):
+    slug = unique_org_key(org, cname)
+    if duplicate_collaborator_org(project, slug):
         return
     
+    co['slug'] = slug
     co['canonical'] = cname
     co['alt'] = alts
-    co[cname + "_principalInvestigator"] = cname if role == "principalInvestigator" else None
-    co[cname + "_coInvestigator"] = cname if role == "coInvestigator" else None
-    co[cname + "_leadResearchOrganisation"] = cname if role == "leadResearchOrganisation" else None
-    co[cname + "_fellow"] = cname if role == "fellow" else None
+    
+    if role == "principalInvestigator":
+        co[slug + "_principalInvestigator"] = slug
+        co["principalInvestigator"] = cname
+    
+    if role == "coInvestigator":
+        co[slug + "_coInvestigator"] = slug
+        co["coInvestigator"] = cname
+    
+    if role == "leadRo":
+        co[slug + "_leadRo"] = slug
+        co["leadRo"] = cname
+    
+    if role == "fellow":
+        co[slug + "_fellow"] = slug
+        co["fellow"] = cname
+    
     append(project, "collaboratorOrganisation", co)
 
-def duplicate_collaborator_org(project, cname):
+def unique_org_key(org, cname):
+    # we only really have the name to key off
+    return hashlib.md5(cname.encode("utf-8")).hexdigest()
+    
+def duplicate_collaborator_org(project, slug):
     for o in project.get("collaboratorOrganisation", []):
-        if o.get("canonical") == cname:
+        if o.get("slug") == slug:
             return True
     return False
 
 def org_names(org):
+    # FIXME: needs to bind to the alternate names api when that is ready
     name = org.get("name")
     return name, [name]
 
@@ -199,20 +234,22 @@ def append(obj, key, value):
     else:
         obj[key] = [value]
 
-LIMIT = -1
+LIMIT = 5000
 COUNTER = 1
+fr = 0
 while True:
     # list everything, and extract the objects
-    result = models.Project.query(q=all_query)
-    projects = [i.get("_source", {}) for i in result.get('hits', {}).get('hits', [])]
+    projects = models.Project.query(q=all_query, from_record=fr, result_size=query_size, raw=False)
     
     # if we reach the end, break
     if len(projects) == 0:
         break
     
     # prep the next page query
-    all_query['from'] = all_query['from'] + all_query['size']
+    fr += query_size
     
+    batch = []
+    start = datetime.now()
     for project in projects:
         # unwrap from the unnecessary projectComposition
         project = project.get("projectComposition")
@@ -224,17 +261,34 @@ while True:
         cleanup(project)
         
         # report to the cli
-        print str(COUNTER) + " saving enhanced record " + str(project.get("project", {}).get("id"))
+        # print str(COUNTER) + " batching enhanced record " + str(project.get("project", {}).get("id"))
         # print json.dumps(project, indent=2)
+        batch.append(project)
         
         # save and iterate
-        record = models.Record(**project)
-        record.save()
+        #record = models.Record(**project)
+        #record.save()
         
         COUNTER += 1
+    interim = datetime.now()
+    processing_diff = interim - start
+    interim_seconds = processing_diff.total_seconds()
+    
+    # print "WRITING BATCH TO ELASTIC SEARCH"
+    models.Record.bulk(batch, refresh=True)
+    
+    end = datetime.now()
+    diff = end - start
+    total_seconds = diff.total_seconds()
+    bulk_seconds = total_seconds - interim_seconds
+    
+    print ", ".join([str(COUNTER - 1), str(query_size), str(interim_seconds), str(bulk_seconds), str(total_seconds)])
     
     # if we have a limiter in place, determine if we need to break
     if LIMIT > 0 and COUNTER >= LIMIT:
         break
-        
+
+# when we finish, refresh the index
+print "REFRESHING ELASTIC SEARCH"
+models.Record.refresh()
 

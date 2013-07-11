@@ -1,22 +1,22 @@
-import dao
+import es
 
-class Project(dao.DomainObject):
+class Project(es.DomainObject):
     __type__ = "project"
 
-class CerifProject(dao.DomainObject):
+class CerifProject(es.DomainObject):
     __type__ = "cerifproject"
 
-class Person(dao.DomainObject):
+class Person(es.DomainObject):
     __type__ = "person"
     
-class Organisation(dao.DomainObject):
+class Organisation(es.DomainObject):
     __type__ = "organisation"
     
-class Publication(dao.DomainObject):
+class Publication(es.DomainObject):
     __type__ = "publication"
     
-class CerifClass(dao.DomainObject):
+class CerifClass(es.DomainObject):
     __type__ = "cerifclass"
     
-class Record(dao.DomainObject):
+class Record(es.DomainObject):
     __type__ = "record"
