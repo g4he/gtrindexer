@@ -97,11 +97,9 @@ def add_collaborator_person(project, role, person):
     collp['canonical'] = cname
     
     if role is "principalInvestigator":
-        collp[unique + "_principalInvestigator"] = unique
         collp["principalInvestigator"] = cname
     
     if role is "coInvestigator":
-        collp[unique + "_coInvestigator"] = unique
         collp["coInvestigator"] = cname
     
     append(project, "collaboratorPerson", collp)
@@ -123,7 +121,7 @@ def canonical_name(person):
     sn = person.get("person", {}).get("surname")
     fn = person.get("person", {}).get("firstName")
     if sn is not None and fn is not None:
-         return sn + ", " + fn
+         return sn + " " + fn
     if sn is None and fn is not None:
         return fn
     if sn is not None and fn is None:
@@ -174,19 +172,15 @@ def add_collaborator_org(project, role, org):
     co['alt'] = alts
     
     if role == "principalInvestigator":
-        co[slug + "_principalInvestigator"] = slug
         co["principalInvestigator"] = cname
     
     if role == "coInvestigator":
-        co[slug + "_coInvestigator"] = slug
         co["coInvestigator"] = cname
     
     if role == "leadRo":
-        co[slug + "_leadRo"] = slug
         co["leadRo"] = cname
     
     if role == "fellow":
-        co[slug + "_fellow"] = slug
         co["fellow"] = cname
     
     append(project, "collaboratorOrganisation", co)
